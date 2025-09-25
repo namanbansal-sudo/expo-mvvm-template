@@ -1,299 +1,279 @@
 # Expo MVVM Template
 
-A comprehensive Expo React Native template with MVVM architecture that generates a complete, production-ready mobile application with modern best practices.
+A modern, production-ready **MVVM (Model-View-ViewModel) architecture template** for Expo React Native applications with file-based routing, TypeScript support, and comprehensive navigation setup.
 
-## 🚀 Features
+## ✨ Features
 
-- **MVVM Architecture** - Clean separation of concerns with View, Container (ViewModel), and Model layers
-- **File-based Routing** - Modern Expo Router setup with nested navigation
-- **TypeScript Support** - Full type safety throughout the application
-- **Authentication System** - Persistent login with AsyncStorage and mock authentication
-- **Theme System** - Light and dark mode support with persistent preferences
-- **Permission Management** - Easy-to-use permission hooks for mobile features
-- **Reusable Components** - Pre-built Button, TextInput, and Card components
-- **Development Tools** - Comprehensive logging, performance monitoring, and error handling
-- **API Client** - Ready-to-use API client with error handling
-- **Storage Utilities** - AsyncStorage wrapper for persistent data management
+- 🏗️ **MVVM Architecture** - Clean separation of concerns with View, Container (ViewModel), and Model layers
+- 📁 **File-Based Routing** - Modern Expo Router setup with nested navigation (Drawer → Tabs → Screens)
+- 🎯 **TypeScript Support** - Full type safety throughout the application with proper path mappings
+- 🔐 **Authentication System** - Complete auth flow with AsyncStorage persistence and mock authentication
+- 🎨 **Theme System** - Light/dark mode support with persistent preferences
+- 🧭 **Navigation Setup** - Stack, Tabs, and Drawer navigation with React Navigation v7
+- 🏪 **State Management** - Zustand for global state management
+- 🔧 **Development Tools** - Comprehensive logging, error handling, and utility functions
+- 🌐 **API Client** - Ready-to-use API client with error handling and interceptors
+- 🔒 **Permission Management** - Easy-to-use permission hooks for mobile features
+- 📱 **Reusable Components** - Pre-built UI components (Button, TextInput, Card, etc.)
 
-## 📦 Installation
+## 📋 Requirements
+
+- **Node.js** >= 14.0.0
+- **Expo CLI** >= 49.0.0
+- **React** >= 18.0.0
+- **React Native** >= 0.72.0
+
+## 🚀 Quick Start
 
 ### Option 1: Using npx (Recommended)
 
-```bash
+````bash
+# Create a new Expo project with MVVM template
 npx expo-mvvm-template MyAppName
-```
 
-### Option 2: Using npm
-
-```bash
-npm install -g expo-mvvm-template
-expo-mvvm-template MyAppName
-```
-
-### Option 3: Using yarn
-
-```bash
-yarn global add expo-mvvm-template
-expo-mvvm-template MyAppName
-```
-
-## 🔄 How It Works
-
-The template generator follows a smart approach to avoid duplication:
-
-1. **Creates Basic Expo Project**: Uses `npx create-expo-app` to generate a standard Expo project with TypeScript
-2. **Replaces with MVVM Structure**: Overwrites the default folders with our comprehensive MVVM template
-3. **Clean Integration**: The generated project has the exact structure you need without any duplication
-
-### Generated Project Structure
-
-```
-MyAppName/
-├── app/                    # File-based routing screens (MVVM structure)
-│   ├── _layout.tsx        # Root layout with providers
-│   ├── index/             # Home screen (MVVM)
-│   │   ├── index.tsx      # Entry point
-│   │   ├── view.tsx       # UI components
-│   │   ├── container.tsx  # Business logic
-│   │   └── styles.tsx     # Styles
-│   ├── login/             # Login screen (MVVM)
-│   └── dashboard/         # Dashboard screen (MVVM)
-├── assets/                # Static assets (replaced with template)
-├── components/            # Reusable UI components (replaced with template)
-│   ├── Button.tsx
-│   ├── TextInput.tsx
-│   └── Card.tsx
-├── context/               # React Context providers (replaced with template)
-│   ├── AuthContext.tsx
-│   └── ThemeContext.tsx
-├── hooks/                 # Custom React hooks (replaced with template)
-│   ├── useAuth.ts
-│   ├── useTheme.ts
-│   └── usePermission.ts
-├── store/                 # State management (replaced with template)
-│   └── AuthStore.ts
-├── types/                 # TypeScript type definitions (replaced with template)
-│   ├── auth.ts
-│   ├── theme.ts
-│   └── permission.ts
-├── utils/                 # Utility functions (replaced with template)
-│   ├── storage.ts
-│   ├── theme.ts
-│   ├── debug.ts
-│   ├── permissions.ts
-│   └── api.ts
-├── App.tsx               # Main app component
-├── package.json          # Project dependencies
-└── README.md             # Project documentation
-```
-
-```
-src/
-├── app/                    # File-based routing screens
-│   ├── _layout.tsx        # Root layout with providers
-│   ├── index/             # Home screen (MVVM)
-│   │   ├── index.tsx      # Entry point
-│   │   ├── view.tsx       # UI components
-│   │   ├── container.tsx  # Business logic
-│   │   └── styles.tsx     # Styles
-│   ├── login/             # Login screen (MVVM)
-│   └── dashboard/         # Dashboard screen (MVVM)
-├── components/            # Reusable UI components
-│   ├── Button.tsx
-│   ├── TextInput.tsx
-│   └── Card.tsx
-├── context/               # React Context providers
-│   ├── AuthContext.tsx
-│   └── ThemeContext.tsx
-├── hooks/                 # Custom React hooks
-│   ├── useAuth.ts
-│   ├── useTheme.ts
-│   └── usePermission.ts
-├── store/                 # State management
-│   └── AuthStore.ts
-├── types/                 # TypeScript type definitions
-│   ├── auth.ts
-│   ├── theme.ts
-│   └── permission.ts
-├── utils/                 # Utility functions
-│   ├── storage.ts
-│   ├── theme.ts
-│   ├── debug.ts
-│   ├── permissions.ts
-│   └── api.ts
-└── assets/                # Static assets
-```
-
-## 🏗️ Architecture
-
-This template follows the **MVVM (Model-View-ViewModel)** architectural pattern:
-
-### View Layer
-- Contains only UI components and styling
-- Receives props from Container
-- Handles user interactions and passes them to Container
-
-### Container Layer (ViewModel)
-- Contains business logic and state management
-- Acts as the bridge between View and Model
-- Handles data transformation and API calls
-
-### Model Layer
-- Contains data models and business logic
-- Includes stores, services, and utilities
-
-## 🔧 Key Components
-
-### Authentication System
-- **AuthStore**: Singleton class managing authentication state
-- **AuthContext**: React context for authentication state
-- **useAuth**: Custom hook for easy authentication access
-
-### Theme System
-- **ThemeContext**: React context for theme management
-- **useTheme**: Custom hook for theme access
-- **Light/Dark Themes**: Pre-configured theme objects
-
-### Permission Management
-- **usePermission**: Custom hook for permission checking and requesting
-- **PermissionManager**: Utility class for permission operations
-
-### Development Tools
-- **Logger**: Comprehensive logging system
-- **PerformanceMonitor**: Performance tracking utilities
-- **ErrorHandler**: Error capturing and reporting
-
-## 🎨 Customization
-
-### Adding New Screens
-1. Create a new folder in `app/`
-2. Create the MVVM files: `index.tsx`, `view.tsx`, `container.tsx`, `styles.tsx`
-3. Add the route to the Stack in `_layout.tsx`
-
-### Adding New Components
-1. Create the component in `components/`
-2. Use the theme system for consistent styling
-3. Add proper TypeScript types
-
-### Extending the API
-1. Add new endpoints to `utils/api.ts`
-2. Update the API client configuration
-3. Add response types and error handling
-
-## 📱 Running the App
-
-After generating your project:
-
-```bash
+# Navigate to project
 cd MyAppName
+
+# Install dependencies
 npm install
+
+# Start development
 npm start
-```
+✨ Features
+🏗️ MVVM Architecture - Clean separation of concerns
 
-This will start the Expo development server. You can then:
-- Press `w` to open in web browser
-- Press `i` to open iOS simulator (macOS only)
-- Press `a` to open Android emulator
-- Scan QR code with Expo Go app on your phone
+📁 File-Based Routing - Expo Router with TypeScript
 
-## 🔒 Authentication
+🎯 TypeScript Support - Full type safety
 
-The template includes a mock authentication system. To implement real authentication:
+🔐 Authentication System - Complete auth flow with context
 
-1. Update the `AuthStore.login()` method to call your API
-2. Modify the login credentials validation
-3. Add proper error handling for authentication failures
-4. Implement token refresh logic if needed
+🎨 Theme System - Light/dark mode support
 
-## 🎭 Theming
+📱 Navigation - Stack, Tabs, and Drawer navigation
 
-The template supports both light and dark themes. To customize themes:
+🏪 State Management - Zustand for global state
 
-1. Modify the theme objects in `utils/theme.ts`
-2. Update colors, spacing, and typography values
-3. Add new theme variants if needed
+🛠️ Utility Functions - Storage, API, debugging utilities
 
-## 📋 Permissions
+🔒 Permission Management - Easy mobile permission handling
 
-The template includes a permission management system. Common permissions supported:
+📁 Generated Structure
+text
+MyAppName/
+├── app/                    # File-based routes (MVVM pattern)
+│   ├── (drawer)/          # Drawer navigation group
+│   │   ├── (tabs)/        # Tab navigation group
+│   │   │   ├── home/      # Home screen
+│   │   │   └── profile/   # Profile screen
+│   │   └── settings/      # Settings screen
+│   ├── login/             # Login screen
+│   └── _layout.tsx        # Root layout
+├── components/            # Reusable UI components
+├── context/               # React Context providers
+├── hooks/                 # Custom React hooks
+├── store/                 # Zustand state management
+├── types/                 # TypeScript definitions
+├── utils/                 # Utility functions
+└── assets/                # Static assets
+🏗️ MVVM Architecture
+Each screen follows the MVVM pattern:
 
-- Camera
-- Photo Library
-- Location
-- Notifications
-- Microphone
-- Contacts
-- Calendar
-- Motion sensors
+view.tsx - Pure UI components and styling
 
-## 🛠️ Development
+container.tsx - Business logic and state management
 
-### Debugging
-Use the included debugging utilities:
-```typescript
-import { devUtils } from './utils/debug';
+styles.tsx - Component-specific styles
 
-// Log messages
-devUtils.logger.info('App started');
+index.tsx - Screen entry point
 
-// Performance monitoring
-devUtils.performanceMonitor.startMark('api-call');
-devUtils.performanceMonitor.endMark('api-call');
+Example: Login Screen
+typescript
+// app/login/view.tsx - UI only
+export const LoginView: React.FC<LoginViewProps> = ({
+  email, setEmail, password, setPassword, handleLogin, isLoading
+}) => {
+  return (
+    <View style={styles.container}>
+      <TextInput value={email} onChangeText={setEmail} />
+      <Button onPress={handleLogin} title="Login" />
+    </View>
+  );
+};
 
-// Error handling
-devUtils.errorHandler.captureError(error, 'Login failed');
-```
+// app/login/container.tsx - Business logic
+export const LoginContainer: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const { login } = useAuth();
 
-### Storage
-Persistent storage utilities:
-```typescript
-import { Storage } from './utils/storage';
+  const handleLogin = async () => {
+    await login(email, password);
+  };
 
-// Store data
-await Storage.setItem('user', userData);
+  return <LoginView {...{ email, setEmail, handleLogin }} />;
+};
+🛠️ Included Technologies
+Dependencies
+expo-router - File-based routing
 
-// Retrieve data
-const user = await Storage.getItem('user');
+@react-navigation/* - Navigation components
 
-// Remove data
-await Storage.removeItem('user');
-```
+zustand - State management
 
-## 🤝 Contributing
+@react-native-async-storage/async-storage - Persistent storage
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+axios - HTTP client
 
-## 📄 License
+react-native-svg - SVG icon support
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Dev Dependencies
+typescript - Type safety
 
-## 🆘 Support
+@types/react - React TypeScript definitions
 
-If you encounter any issues or have questions:
+@types/react-native - React Native TypeScript definitions
 
-1. Check the generated project's README.md
-2. Review the example implementations in the generated screens
-3. Check the TypeScript types and interfaces
-4. Refer to the Expo documentation for platform-specific features
+🎯 Usage
+Creating New Screens
+Create folder in app/ (e.g., app/products/)
 
-## 🔄 Updates
+Add MVVM files: view.tsx, container.tsx, styles.tsx, index.tsx
 
-To update the template:
+Route automatically available at /products
 
-```bash
-npm update expo-mvvm-template
-```
+Using Authentication
+typescript
+import { useAuth } from '../hooks/useAuth';
 
-Or regenerate your project with the latest version:
+const { user, login, logout } = useAuth();
+Using Themes
+typescript
+import { useTheme } from '../hooks/useTheme';
 
-```bash
-npx expo-mvvm-template MyAppName --force
-```
+const { theme, toggleTheme } = useTheme();
+API Calls
+typescript
+import { apiClient } from '../utils/api';
 
----
+const response = await apiClient.get('/users');
+🔧 Customization
+Adding New Dependencies
+bash
+npm install your-package
+Modifying Themes
+Edit utils/theme.ts to change colors, spacing, or typography.
 
-**Happy coding!** 🎉
+Adding API Endpoints
+Extend utils/api.ts with your backend endpoints.
+
+📱 Running the App
+bash
+# Start development
+npm start
+
+# Platform-specific
+npm run android    # Android emulator
+npm run ios        # iOS simulator
+npm run web        # Web browser
+🐛 Troubleshooting
+Common Issues
+Navigation errors: Ensure all React Navigation packages are same version
+
+TypeScript errors: Check if types are properly installed
+
+Build failures: Clear cache with npx expo start --clear
+
+Dependencies Conflict
+If you encounter version conflicts:
+
+bash
+npm install --legacy-peer-deps
+🤝 Contributing
+We welcome contributions! Please see our Contributing Guide for details.
+
+📄 License
+MIT License - see LICENSE file for details.
+
+🆘 Support
+📧 Email: [Your Email]
+
+🐛 Issues: GitHub Issues
+
+💬 Discussions: GitHub Discussions
+
+🙏 Acknowledgments
+Expo team for the amazing framework
+
+React Navigation team for robust navigation solutions
+
+React Native community for continuous improvements
+
+Built with ❤️ for the Expo community
+
+⭐ If this template helps you, please give it a star on GitHub!
+
+text
+
+## Key Changes to README.md:
+
+1. **Simplified Quick Start** - More direct instructions
+2. **Better Feature Highlights** - Clearer value proposition
+3. **Fixed Structure Example** - Matches your actual template structure
+4. **Added Code Examples** - Practical usage examples
+5. **Better Troubleshooting** - Clear solutions to common issues
+6. **Professional Formatting** - Better visual hierarchy
+
+## Additional Files You Should Create:
+
+### 1. Create `.npmignore`
+Development files
+.git/
+.github/
+.vscode/
+test-/
+backup-/
+node_modules/
+
+Documentation
+*.md
+!README.md
+
+Logs
+.log
+npm-debug.log
+
+OS files
+.DS_Store
+Thumbs.db
+
+IDE files
+.idea/
+*.swp
+*.swo
+
+text
+
+### 2. Create `LICENSE` file (MIT License)
+```text
+MIT License
+
+Copyright (c) 2024 Developer_NMN
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+````
