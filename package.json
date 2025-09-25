@@ -26,11 +26,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Developer_NMN/expo-mvvm-template.git"
+    "url": "https://github.com/namanbansal-sudo/expo-mvvm-template.git"
   },
-  "homepage": "https://github.com/Developer_NMN/expo-mvvm-template#readme",
+  "homepage": "https://github.com/namanbansal-sudo/expo-mvvm-template#readme",
   "bugs": {
-    "url": "https://github.com/Developer_NMN/expo-mvvm-template/issues"
+    "url": "https://github.com/namanbansal-sudo/expo-mvvm-template/issues"
   },
   "engines": {
     "node": ">=14.0.0"
