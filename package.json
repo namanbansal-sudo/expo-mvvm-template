@@ -1,0 +1,45 @@
+{
+  "name": "expo-mvvm-template",
+  "version": "1.0.0",
+  "description": "A comprehensive Expo React Native template with MVVM architecture",
+  "main": "bin/generator.js",
+  "bin": {
+    "expo-mvvm-template": "bin/generator.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "expo",
+    "react-native",
+    "template",
+    "mvvm",
+    "file-based-routing",
+    "typescript",
+    "mobile",
+    "ios",
+    "android"
+  ],
+  "author": "Developer_NMN",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/expo-mvvm-template.git"
+  },
+  "homepage": "https://github.com/your-username/expo-mvvm-template#readme",
+  "bugs": {
+    "url": "https://github.com/your-username/expo-mvvm-template/issues"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md"
+  ],
+  "dependencies": {
+    "axios": "^1.6.0",
+    "fs-extra": "^11.1.1"
+  }
+}
